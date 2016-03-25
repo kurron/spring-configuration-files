@@ -1,21 +1,18 @@
 #Overview
-This project is a simple Docker image that runs [Consul](https://consul.io/), saving you from having to install it.
+This project holds all the configurations for the various projects that use the Spring Configuration server.
 
 #Prerequisites
-* a working [Docker](http://docker.io) engine
-* a working [Docker Compose](http://docker.io) installation
+None.
 
 #Building
-Type `docker-compose build` to build the image.
+Since these are simply data files consumed by another project, there is nothing to build.
 
 #Installation
-Docker Compose will automatically install the newly built image into the cache.
+Nothing to install.
 
 #Tips and Tricks
 
-##Launching The Image
-
-`docker-compose up` will launch the image, proving it built correctly.  For everyday use, run `./consul.sh`.
+##Supporting Different Spring Profiles
 
 #Troubleshooting
 
