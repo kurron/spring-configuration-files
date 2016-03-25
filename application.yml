@@ -6,9 +6,9 @@ spring:
         template:
             check-template-location: false
     jackson:
-    serialization:
-      indent_output: true
-    serialization-inclusion: non_empty
+        serialization:
+            indent_output: true
+        serialization-inclusion: non_empty
     rabbitmq:
         host: localhost
         port: 5672
