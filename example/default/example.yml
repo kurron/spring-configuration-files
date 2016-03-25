@@ -1,0 +1,58 @@
+spring:
+  main:
+    banner-mode: console
+  groovy:
+    template:
+      check-template-location: false
+  jackson:
+    serialization:
+      indent_output: true
+    serialization-inclusion: non_empty
+  rabbitmq:
+    host: localhost
+    port: 5672
+    virtualHost: /
+    username: guest
+    password: guest
+
+management:
+    context-path: /operations
+
+endpoints:
+  health:
+    sensitive: false
+
+server:
+  port: 8080
+  contextPath: /
+
+logging:
+  config: classpath:logback.xml
+
+info:
+  app:
+    name: ${name}
+    description: ${description}
+    version: ${version}
+
+security:
+  user:
+    name: developer
+    password: developer
+  basic:
+    enabled: false
+    realm: example
+
+example:
+  foo: default
+  exchangeName: some-exchange
+  queueName: some-queue
+
+#---------- profile specific overrides ----------#
+
+---
+spring:
+  profiles: bamboo
+example:
+  foo: bamboo
+
