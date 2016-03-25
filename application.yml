@@ -3,11 +3,6 @@ endpoints:
     health:
         time-to-live: 1000
         sensitive: false
-info:
-    app:
-        name: ${name}
-        description: ${description}
-        version: ${version}
 logging:
     config: classpath:logback.xml
 management:
