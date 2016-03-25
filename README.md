@@ -15,10 +15,9 @@ Nothing to install.
 ##Supporting Different Spring Profiles
 The Spring Configuration server will combine multiple configuration files using the following rules:
 
-* all files named `application.yml`
-* files in the `${application}/${profile}` folder.  Where `application` maps to `spring.application.name`
+* the `application.yml` is a configuration shared between all applications
+* files named `${application}-${profile}.yml`.  Where `application` maps to `spring.application.name`
 and `profile` maps to `spring.active.profiles` on the client.
-* application-specific are typically named `${application}.yml`
 
 #Troubleshooting
 
