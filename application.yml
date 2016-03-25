@@ -1,4 +1,31 @@
 # shared configuration for all applications
+endpoints:
+    health:
+        health.time-to-live: 1000
+        sensitive: false
+info:
+  app:
+    name: ${name}
+    description: ${description}
+    version: ${version}
+logging:
+  config: classpath:logback.xml
+management:
+    context-path: /operations
+    security:
+        enabled: false
+        role: admin
+        sessions: stateless
+security:
+  user:
+    name: developer
+    password: developer
+  basic:
+    enabled: false
+    realm: example
+server:
+  port: 8080
+  contextPath: /
 spring:
     cloud:
         consul:
@@ -8,8 +35,6 @@ spring:
                 healthCheckPath: ${management.contextPath}/health
                 healthCheckInterval: 15s
                 instanceId: ${spring.application.name}:${random.value}
-    main:
-        banner-mode: console
     groovy:
         template:
             check-template-location: false
@@ -17,38 +42,11 @@ spring:
         serialization:
             indent_output: true
         serialization-inclusion: non_empty
+    main:
+        banner-mode: console
     rabbitmq:
         host: localhost
+        password: guest
         port: 5672
         virtualHost: /
         username: guest
-        password: guest
-
-management:
-    context-path: /operations
-
-endpoints:
-    health:
-        sensitive: false
-        health.time-to-live: 1000
-
-server:
-  port: 8080
-  contextPath: /
-
-logging:
-  config: classpath:logback.xml
-
-info:
-  app:
-    name: ${name}
-    description: ${description}
-    version: ${version}
-
-security:
-  user:
-    name: developer
-    password: developer
-  basic:
-    enabled: false
-    realm: example
