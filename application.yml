@@ -1,15 +1,15 @@
 # shared configuration for all applications
 endpoints:
     health:
-        health.time-to-live: 1000
+        time-to-live: 1000
         sensitive: false
 info:
-  app:
-    name: ${name}
-    description: ${description}
-    version: ${version}
+    app:
+        name: ${name}
+        description: ${description}
+        version: ${version}
 logging:
-  config: classpath:logback.xml
+    config: classpath:logback.xml
 management:
     context-path: /operations
     security:
@@ -17,15 +17,15 @@ management:
         role: admin
         sessions: stateless
 security:
-  user:
-    name: developer
-    password: developer
-  basic:
-    enabled: false
-    realm: example
+    user:
+        name: developer
+        password: developer
+    basic:
+        enabled: false
+        realm: example
 server:
-  port: 8080
-  contextPath: /
+    port: 8080
+    contextPath: /
 spring:
     cloud:
         consul:
