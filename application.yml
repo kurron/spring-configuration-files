@@ -11,7 +11,7 @@ info:
 logging:
     config: classpath:logback.xml
 management:
-    context-path: /operations
+    contextPath: /operations
     security:
         enabled: false
         role: admin
