@@ -32,7 +32,7 @@ spring:
             host: localhost
             port: 8500
             discovery:
-#               healthCheckPath: ${management.contextPath}/health
+                healthCheckPath: ${management.contextPath}/health
                 healthCheckInterval: 15s
                 instanceId: ${spring.application.name}:${random.value}
     groovy:
