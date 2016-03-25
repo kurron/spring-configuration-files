@@ -28,8 +28,9 @@ management:
     context-path: /operations
 
 endpoints:
-  health:
-    sensitive: false
+    health:
+        sensitive: false
+        health.time-to-live: 1000
 
 server:
   port: 8080
