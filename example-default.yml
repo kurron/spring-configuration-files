@@ -1,4 +1,6 @@
 example:
-  foo: default
-  exchangeName: some-exchange
-  queueName: some-queue
+    foo: default
+    exchangeName: some-exchange
+    queueName: some-queue
+    deadLetterExchangeName: dead-letter
+    deadLetterQueueName: dead-letter
