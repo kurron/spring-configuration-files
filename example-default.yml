@@ -4,3 +4,4 @@ example:
     queueName: some-queue
     deadLetterExchangeName: dead-letter
     deadLetterQueueName: dead-letter
+    messageRetryAttempts: 3
