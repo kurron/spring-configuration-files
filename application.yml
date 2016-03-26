@@ -20,8 +20,9 @@ security:
         enabled: false
         realm: example
 server:
-    port: 8080
     contextPath: /
+    port: 8080
+    use-forward-headers: true
 spring:
     cloud:
         consul:
