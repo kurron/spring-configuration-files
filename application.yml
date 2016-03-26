@@ -41,6 +41,12 @@ spring:
     groovy:
         template:
             check-template-location: false
+    inetutils:
+        timeoutSeconds: 1
+        defaultHostname: localhost
+        localhost: 127.0.0.1
+        ignoredInterfaces:
+            - docker0
     jackson:
         serialization:
             indent_output: true
