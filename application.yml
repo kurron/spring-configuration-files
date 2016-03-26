@@ -23,6 +23,9 @@ server:
     contextPath: /
     port: 8080
     use-forward-headers: true
+    tomcat:
+#       protocol-header: x-your-protocol-header
+#       remote-ip-header: x-your-remote-ip-header
 spring:
     cloud:
         consul:
