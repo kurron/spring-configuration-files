@@ -1,4 +1,5 @@
 # shared configuration for all applications
+applications: consulhystrixclient
 endpoints:
     health:
         time-to-live: 1000
@@ -45,3 +46,7 @@ spring:
         port: 5672
         virtualHost: /
         username: guest
+turbine:
+    aggregator:
+        clusterConfig: ${applications}
+    appConfig: ${applications}
