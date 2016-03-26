@@ -22,19 +22,22 @@ security:
 server:
     contextPath: /
     port: 8080
-    use-forward-headers: true
+    useForwardHeaders: true
     tomcat:
-#       protocol-header: x-your-protocol-header
-#       remote-ip-header: x-your-remote-ip-header
+        portHeader: X-Forwarded-Port
+        protocolHeader: X-Forwarded-Protocol-Header
+        remoteIpHeader: X-Forwarded-Remote-IP-Header
 spring:
     cloud:
         consul:
             host: localhost
             port: 8500
             discovery:
-                healthCheckPath: ${management.contextPath}/health
                 healthCheckInterval: 15s
+                healthCheckPath: ${management.contextPath}/health
                 instanceId: ${spring.application.name}:${random.value}
+                preferAgentAddress: true
+                preferIpAddress: true
     groovy:
         template:
             check-template-location: false
