@@ -1,17 +1,25 @@
 # shared configuration for all applications
 applications: consulhystrixclient
+
 endpoints:
     health:
         time-to-live: 1000
         sensitive: false
+
 logging:
     config: classpath:logback.xml
+
+netflix:
+    atlas:
+        uri: http://localhost:7101
+
 management:
     contextPath: /operations
     security:
         enabled: false
         role: admin
         sessions: stateless
+
 security:
     user:
         name: developer
@@ -19,6 +27,7 @@ security:
     basic:
         enabled: false
         realm: example
+
 server:
     contextPath: /
     port: 8080
@@ -27,6 +36,7 @@ server:
         portHeader: X-Forwarded-Port
         protocolHeader: X-Forwarded-Protocol-Header
         remoteIpHeader: X-Forwarded-Remote-IP-Header
+
 spring:
     cloud:
         config:
@@ -64,6 +74,7 @@ spring:
         port: 5672
         virtualHost: /
         username: guest
+
 turbine:
     aggregator:
         clusterConfig: ${applications}
