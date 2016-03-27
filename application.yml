@@ -29,6 +29,11 @@ server:
         remoteIpHeader: X-Forwarded-Remote-IP-Header
 spring:
     cloud:
+        config:
+            allowOverride: true
+            failFast: true
+            overrideNone: false
+            overrideSystemProperties: true
         consul:
             host: localhost
             port: 8500
