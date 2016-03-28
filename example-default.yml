@@ -5,3 +5,4 @@ example:
     deadLetterExchangeName: dead-letter
     deadLetterQueueName: dead-letter
     messageRetryAttempts: 3
+    inputChannelName: my-input-channel
