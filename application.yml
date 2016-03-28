@@ -42,7 +42,7 @@ spring:
         config:
             allowOverride: true
             failFast: true
-            overrideNone: false
+            overrideNone: true
             overrideSystemProperties: true
         consul:
             host: localhost
