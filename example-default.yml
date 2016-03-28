@@ -34,7 +34,6 @@ spring:
                         txSize: 1
                 output:
                     destination: rendezous
-                    group: example
                     contentType: text/plain
                     producer:
                         autoBindDlq: true
