@@ -6,3 +6,38 @@ example:
     deadLetterQueueName: dead-letter
     messageRetryAttempts: 3
     inputChannelName: my-input-channel
+
+spring:
+    cloud:
+        stream:
+            bindings:
+                input:
+                    destination: input
+                    group: example
+                    contentType: application/json
+                    consumer:
+                        concurrency: 1
+                        partitioned: false
+                        maxAttempts: 3
+                        backOffInitialInterval: 1000
+                        backOffMaxInterval: 10000
+                        backOffMultiplier: 2.0
+                        acknowledgeMode: AUTO
+                        autoBindDlq: true
+                        durableSubscription: true
+                        maxConcurrency: 1
+                        prefetch: 1
+                        prefix: ${spring.application.name}.
+                        requeueRejected: true
+                        republishToDlq: true
+                        transacted: false
+                        txSize: 1
+                    producer:
+                        autoBindDlq: true
+                        batchingEnabled: false
+                        batchSize: 100
+                        batchBufferLimit: 1000
+                        batchTimeout: 5000
+                        compress: false
+                        deliveryMode: PERSISTENT
+                        prefix: ${spring.application.name}.
