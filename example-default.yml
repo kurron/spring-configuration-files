@@ -12,9 +12,9 @@ spring:
         stream:
             bindings:
                 input:
-                    destination: input
+                    destination: rendezous
                     group: example
-                    contentType: application/json
+                    contentType: text/plain
                     consumer:
                         concurrency: 1
                         partitioned: false
@@ -32,6 +32,10 @@ spring:
                         republishToDlq: true
                         transacted: false
                         txSize: 1
+                output:
+                    destination: rendezous
+                    group: example
+                    contentType: text/plain
                     producer:
                         autoBindDlq: true
                         batchingEnabled: false
