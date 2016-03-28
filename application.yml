@@ -42,8 +42,8 @@ spring:
         config:
             allowOverride: true
             failFast: true
-            overrideNone: true
-            overrideSystemProperties: true
+            overrideNone: false
+            overrideSystemProperties: false
         consul:
             host: localhost
             port: 8500
