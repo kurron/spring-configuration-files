@@ -53,6 +53,14 @@ spring:
                 instanceId: ${spring.application.name}:${random.value}
                 preferAgentAddress: true
                 preferIpAddress: true
+        stream:
+            rabbit:
+                binder:
+                    addresses:
+                        - localhost
+                    password: guest
+                    username: guest
+                    vhost: /
     groovy:
         template:
             check-template-location: false
