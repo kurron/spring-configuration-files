@@ -58,6 +58,8 @@ spring:
                 binder:
                     addresses:
                         - localhost
+                    adminAdresses:
+                        - localhost
                     password: guest
                     username: guest
                     vhost: /
