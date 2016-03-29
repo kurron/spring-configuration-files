@@ -45,6 +45,7 @@ spring:
                         deliveryMode: PERSISTENT
                         prefix: ${spring.application.name}.
 zuul:
+    ignoredServices: '*'
     routes:
         users:
             path: /myusers/**
