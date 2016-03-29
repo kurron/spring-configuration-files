@@ -39,6 +39,11 @@ server:
 
 spring:
     cloud:
+        cluster:
+            leader:
+                enabled: true
+                id: Sponge Bob
+                role: Master Of The Universe
         config:
             allowOverride: true
             failFast: true
