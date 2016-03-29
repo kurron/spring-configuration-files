@@ -7,6 +7,10 @@ example:
     messageRetryAttempts: 3
     inputChannelName: my-input-channel
 
+sidecar:
+    port: 2020
+    health-uri: http://localhost:2020/operations/health
+
 spring:
     cloud:
         stream:
