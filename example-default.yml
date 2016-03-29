@@ -60,6 +60,6 @@ zuul:
         third:
             path: /third/**
             url: forward:/3rd
-        legacy:
-            path: /**
-            serviceId: example
+#       legacy:
+#           path: /**
+#           url: http://legacy.example.com
