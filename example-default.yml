@@ -62,4 +62,4 @@ zuul:
             url: forward:/3rd
         legacy:
             path: /**
-            url: http://legacy.example.com
+            serviceId: example
