@@ -1,3 +1,7 @@
+nginx:
+    server:
+        name: example.com
+
 example:
     foo: default
     exchangeName: some-exchange
