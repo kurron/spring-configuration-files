@@ -8,3 +8,8 @@ producer:
 spring:
     datasource:
         driver-class-name: com.mysql.jdbc.Driver
+    jpa:
+        hibernate:
+            ddl-auto: create-drop
+            naming_strategy: org.hibernate.cfg.ImprovedNamingStrategy
+        show-sql: true
