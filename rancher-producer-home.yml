@@ -1,0 +1,13 @@
+---
+spring:
+    cloud:
+        consul:
+            discovery:
+                enabled: false
+                register: false
+    rabbitmq:
+        host: 192.168.1.229
+    datasource:
+        url: jdbc:mysql://192.168.1.229/tlo
+        username: mysql
+        password: mysql
