@@ -1,4 +1,3 @@
----
 producer:
     foo: default
     serviceCode: ${spring.application.name}
