@@ -4,6 +4,7 @@ producer:
     serviceCode: ${spring.application.name}
     serviceInstance: ${random.int[1,65536]}
     realm: development
+    fail: false
 
 spring:
     datasource:
