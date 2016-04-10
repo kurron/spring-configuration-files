@@ -1,3 +1,10 @@
+producer:
+    foo: home
+    serviceCode: ${spring.application.name}
+    serviceInstance: ${random.int[1,65536]}
+    realm: home
+    fail: false
+
 spring:
     cloud:
         consul:
