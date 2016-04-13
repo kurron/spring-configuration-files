@@ -13,3 +13,18 @@ spring:
             ddl-auto: create-drop
             naming_strategy: org.hibernate.cfg.ImprovedNamingStrategy
         show-sql: true
+    cloud:
+        stream:
+            bindings:
+                output:
+                    destination: rendezous
+                    contentType: text/plain
+                    producer:
+                        autoBindDlq: true
+                        batchingEnabled: false
+                        batchSize: 100
+                        batchBufferLimit: 1000
+                        batchTimeout: 5000
+                        compress: false
+                        deliveryMode: PERSISTENT
+                        prefix: ${spring.application.name}.
