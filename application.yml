@@ -1,18 +1,15 @@
-# shared configuration for all applications
-
-applications: ${spring.application.name}
-
-endpoints:
-    health:
-        time-to-live: 1000
-        sensitive: false
-
-logging:
-    config: classpath:logback.xml
-
-netflix:
-    atlas:
-        uri: http://localhost:7101
+#shared configuration for all Spring Boot based applications
+---
+spring:
+    main:
+        banner-mode: console
+    groovy:
+        template:
+            check-template-location: false
+    jackson:
+        serialization:
+            indent_output: true
+        serialization-inclusion: non_empty
 
 management:
     contextPath: /operations
@@ -21,13 +18,11 @@ management:
         role: admin
         sessions: stateless
 
-security:
-    user:
-        name: developer
-        password: developer
-    basic:
-        enabled: false
-        realm: example
+# configure operations endpoints
+endpoints:
+    health:
+        time-to-live: 1000
+        sensitive: false
 
 server:
     contextPath: /
@@ -38,95 +33,22 @@ server:
         protocolHeader: X-Forwarded-Protocol-Header
         remoteIpHeader: X-Forwarded-Remote-IP-Header
 
-spring:
-    cloud:
-        bus:
-            enabled: false
-        cluster:
-            leader:
-                enabled: true
-                id: Sponge Bob
-                role: Master Of The Universe
-        config:
-            allowOverride: true
-            failFast: true
-            overrideNone: false
-            overrideSystemProperties: false
-        consul:
-            host: localhost
-            port: 8500
-            discovery:
-                aclToken:
-                catalogServicesWatchDelay: 10
-                catalogServicesWatchTimeout: 2
-                enabled: true
-                healthCheckInterval: 15s
-                healthCheckPath: /operations/health
-                healthCheckTimeout: 5s
-                healthCheckUrl:
-                hostname:
-                ipAddress:
-                instanceId: ${spring.application.name}:${random.int[1024,65536]}
-                lifecycle:
-                    enabled: true
-                managementSuffix: management
-                managementTags:
-                    - management
-                port: ${server.port}
-                preferAgentAddress: true
-                preferIpAddress: true
-                register: true
-                registerHealthCheck: true
-                scheme: http
-                queryPassing: false
-                serviceName: ${spring.application.name}
-                serverListQueryTags:
-                    some-key: some-value
-                tags:
-                    - ${info.app.version}
-        stream:
-            rabbit:
-                binder:
-                    addresses:
-                        - localhost
-                    adminAdresses:
-                        - localhost
-                    password: guest
-                    username: guest
-                    vhost: /
-    groovy:
-        template:
-            check-template-location: false
-    inetutils:
-        timeoutSeconds: 1
-        defaultHostname: localhost
-        localhost: 127.0.0.1
-        ignoredInterfaces:
-            - docker0
-    jackson:
-        serialization:
-            indent_output: true
-        serialization-inclusion: non_empty
-    main:
-        banner-mode: console
-    oauth2:
-        client:
-            clientId: a1c5113ec74d4fc16c69
-            clientSecret: aac122e5814095dc3525f1a19e5274353330f09d
-            accessTokenUri: https://github.com/login/oauth/access_token
-            userAuthorizationUri: https://github.com/login/oauth/authorize
-            clientAuthenticationScheme: form
-        resource:
-            userInfoUri: https://api.github.com/user
-            preferTokenInfo: false
-    rabbitmq:
-        host: localhost
-        password: guest
-        port: 5672
-        virtualHost: /
-        username: guest
+# which logback configuration file to use
+logging:
+  config: classpath:logback.xml
 
-turbine:
-    aggregator:
-        clusterConfig: ${applications}
-    appConfig: ${applications}
+# Override the default values of the info endpoint
+info:
+  app:
+    name: ${name}
+    description: ${description}
+    version: ${version}
+
+# Override the default security properties, defined in org.springframework.boot.autoconfigure.security.SecurityProperties
+security:
+  user:
+    name: operations
+    password: operations
+  basic:
+    enabled: false
+    realm: example

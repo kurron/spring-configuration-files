@@ -1,73 +1,19 @@
-nginx:
-    server:
-        name: example.com
-
+# app specific properties for the default profile
 example:
-    foo: default
-    exchangeName: some-exchange
-    queueName: some-queue
-    deadLetterExchangeName: dead-letter
-    deadLetterQueueName: dead-letter
-    messageRetryAttempts: 3
-    inputChannelName: my-input-channel
+    logging:
+        serviceCode: ${name}
+        serviceInstance: \${random.int[1,65536]}
+        realm: development
+    inbound:
+        exchangeName: example-commands
+        routingKey: example-commands
+        queueName: example-commands
+    outbound:
+        exchangeName: example-events
+        routingKey: example-events
+    deadletter:
+        exchangeName: example-dead-letter
+        queueName: example-dead-letter
+        routingKey: example-dead-letter
+        messageRetryAttempts: 3
 
-sidecar:
-    port: 2020
-    health-uri: http://localhost:2020/operations/health
-
-spring:
-    cloud:
-        stream:
-            bindings:
-                input:
-                    destination: rendezous
-                    group: example
-                    contentType: text/plain
-                    consumer:
-                        concurrency: 1
-                        partitioned: false
-                        maxAttempts: 3
-                        backOffInitialInterval: 1000
-                        backOffMaxInterval: 10000
-                        backOffMultiplier: 2.0
-                        acknowledgeMode: AUTO
-                        autoBindDlq: true
-                        durableSubscription: true
-                        maxConcurrency: 1
-                        prefetch: 1
-                        prefix: ${spring.application.name}.
-                        requeueRejected: true
-                        republishToDlq: true
-                        transacted: false
-                        txSize: 1
-                output:
-                    destination: rendezous
-                    contentType: text/plain
-                    producer:
-                        autoBindDlq: true
-                        batchingEnabled: false
-                        batchSize: 100
-                        batchBufferLimit: 1000
-                        batchTimeout: 5000
-                        compress: false
-                        deliveryMode: PERSISTENT
-                        prefix: ${spring.application.name}.
-zuul:
-    ignoredServices: '*'
-    routes:
-        users:
-            path: /myusers/**
-            serviceId: users_service
-            sensitiveHeaders: Cookie,Set-Cookie,Authorization
-        first:
-            path: /first/**
-            url: http://first.example.com
-        second:
-            path: /second/**
-            url: forward:/second
-        third:
-            path: /third/**
-            url: forward:/3rd
-#       legacy:
-#           path: /**
-#           url: http://legacy.example.com
