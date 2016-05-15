@@ -37,13 +37,6 @@ server:
 logging:
   config: classpath:logback.xml
 
-# Override the default values of the info endpoint
-info:
-  app:
-    name: ${name}
-    description: ${description}
-    version: ${version}
-
 # Override the default security properties, defined in org.springframework.boot.autoconfigure.security.SecurityProperties
 security:
   user:
