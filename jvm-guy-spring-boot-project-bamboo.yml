@@ -1,0 +1,6 @@
+# properties specific to the bamboo profile
+---
+spring:
+    profiles: bamboo
+example:
+    realm: bamboo
