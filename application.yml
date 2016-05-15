@@ -2,14 +2,15 @@
 ---
 spring:
     cloud:
-        host: 192.168.1.227
-        port: 8500
-        discovery:
-            healthCheckInterval: 15s
-            healthCheckPath: ${management.contextPath}/health
-            instanceId: ${spring.application.name}:${random.int[1,65536]}
-            preferAgentAddress: true
-            preferIpAddress: true
+        consul:
+            host: 192.168.1.227
+            port: 8500
+            discovery:
+                healthCheckInterval: 15s
+                healthCheckPath: ${management.contextPath}/health
+                instanceId: ${spring.application.name}:${random.int[1,65536]}
+                preferAgentAddress: true
+                preferIpAddress: true
     main:
         banner-mode: console
     groovy:
