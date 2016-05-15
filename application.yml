@@ -9,8 +9,10 @@ spring:
                 healthCheckInterval: 15s
                 healthCheckPath: ${management.contextPath}/health
                 instanceId: ${spring.application.name}:${random.int[1,65536]}
+                port: ${server.port}
                 preferAgentAddress: true
                 preferIpAddress: true
+                serviceName: ${spring.application.name}
     main:
         banner-mode: console
     groovy:
