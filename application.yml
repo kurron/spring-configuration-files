@@ -3,7 +3,12 @@
 spring:
     cloud:
         config:
-            uri: http://consul:8080
+#           uri: http://consul:8080
+            server:
+                health:
+                    # there is a bug/feature where the hitting the health endpoint causes the server to refresh with Git
+                    # https://github.com/spring-cloud/spring-cloud-config/issues/423
+                    enabled: false
         consul:
             host: consul
             port: 8500
