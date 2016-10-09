@@ -3,9 +3,9 @@
 spring:
     cloud:
         config:
-            uri: http://192.168.1.227:2020
+            uri: http://consul:8080
         consul:
-            host: 192.168.1.227
+            host: consul
             port: 8500
             discovery:
                 healthCheckInterval: 15s
